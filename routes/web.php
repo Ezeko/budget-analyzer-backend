@@ -15,11 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('/docs');
+    return redirect('/api/docs');
 });
 
-Route::post('/history/create', [HistoriesController::class,'createHistory']);
-
-Route::get('/histories/{user_id}', [HistoriesController::class,'getHistories']);
-
-Route::get('/histories/{user_id}/{budget_type}', [HistoriesController::class,'getHistory']);

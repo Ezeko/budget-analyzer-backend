@@ -5,7 +5,7 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/history/create": {
+        "/api/history/create": {
             "post": {
                 "tags": [
                     "History"
@@ -86,7 +86,7 @@
                 }
             }
         },
-        "/histories/{user_id}": {
+        "/api/histories/{user_id}": {
             "get": {
                 "tags": [
                     "History"
@@ -134,7 +134,7 @@
                 }
             }
         },
-        "/histories/{user_id}/{budget_type}": {
+        "/api/histories/{user_id}/{budget_type}": {
             "get": {
                 "tags": [
                     "History"

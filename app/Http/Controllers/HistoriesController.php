@@ -10,7 +10,7 @@ class HistoriesController extends Controller
     //
     /**
      * @OA\Post(
-     * path="/history/create",
+     * path="/api/history/create",
      * summary="Create history",
      * description="Create new budget history",
      * operationId="History",
@@ -82,7 +82,7 @@ class HistoriesController extends Controller
 
     /**
      * @OA\Get(
-     * path="/histories/{user_id}",
+     * path="/api/histories/{user_id}",
      * summary="Get histories",
      * description="Get all budget histories by user",
      * operationId="GetHistories",
@@ -133,7 +133,7 @@ class HistoriesController extends Controller
 
     /**
      * @OA\Get(
-     * path="/histories/{user_id}/{budget_type}",
+     * path="/api/histories/{user_id}/{budget_type}",
      * summary="Get single history",
      * description="Get all budget of a particular type histories belonging to a particular user user",
      * operationId="GetHistory",
