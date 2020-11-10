@@ -43,10 +43,14 @@ class HistoriesController extends Controller
      * )
      */
     public function createHistory(Request $request){
+       $data = 
+            $request->json()->all()
+        ;
 
+        //return $data['user_id'];
         // validate $requests
 
-        $this->validate($request, 
+        validator( 
         [
             'user_id' => 'required',
             'amount' => 'required',
@@ -56,10 +60,10 @@ class HistoriesController extends Controller
 
         $createHistory = new History();
 
-        $createHistory->user_id = $request->user_id;
-        $createHistory->amount = $request->amount;
-        $createHistory->description = $request->description;
-        $createHistory->budget_type = $request->budget_type;
+        $createHistory->user_id = $data['user_id'];
+        $createHistory->amount = $data['amount'];
+        $createHistory->description = $data['description'];
+        $createHistory->budget_type = $data['budget_type'];
 
         $created = $createHistory->save();
 
