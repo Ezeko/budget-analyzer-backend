@@ -9,8 +9,8 @@ use Illuminate\Routing\Controller as BaseController;
 
 /**
  * @OA\Info(
- *    title="Your super  ApplicationAPI",
- *    version="1.0.0",
+ *    title="Budget Analyzer",
+ *    version="1.0.1",
  * )
  */
 class Controller extends BaseController
