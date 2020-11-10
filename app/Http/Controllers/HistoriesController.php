@@ -43,6 +43,7 @@ class HistoriesController extends Controller
      * )
      */
     public function createHistory(Request $request){
+        //change request to accept json
        $data = 
             $request->json()->all()
         ;
