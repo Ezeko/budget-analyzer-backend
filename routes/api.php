@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BudgetsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HistoriesController;
@@ -32,3 +33,8 @@ Route::get('/dash/histories/{user_id}', [HistoriesController::class,'getDashHist
 
 //store user
 Route::post('/user/create', [UsersController::class, 'store']);
+
+//gets all budgets for a particular user
+Route::get('/budgets/{user_id}', [BudgetsController::class, 'index']);
+
+Route::get('/budgets/{user_id}/{budget_type}', [BudgetsController::class,'getBudget']);

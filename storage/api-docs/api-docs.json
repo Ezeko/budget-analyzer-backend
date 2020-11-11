@@ -49,6 +49,54 @@
                 }
             }
         },
+        "/api/budgets/{user_id}/{budget_type}": {
+            "get": {
+                "tags": [
+                    "Budgets"
+                ],
+                "summary": "Get single budget",
+                "description": "Get all budget of a particular type amount belonging to a particular user user",
+                "operationId": "GetBudget",
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong user details. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Success"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "example": "data objects"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/history/create": {
             "post": {
                 "tags": [
