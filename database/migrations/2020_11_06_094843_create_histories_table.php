@@ -16,6 +16,7 @@ class CreateHistoriesTable extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
+            $table->string('username');
             $table->integer('amount');
             $table->string('description');
             $table->string('budget_type');

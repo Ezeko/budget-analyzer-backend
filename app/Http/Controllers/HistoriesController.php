@@ -57,12 +57,14 @@ class HistoriesController extends Controller
             'amount' => 'required',
             'description' => 'required',
             'budget_type' => 'required',
-            'priority' => 'required'
+            'priority' => 'required',
+            'username' => 'required'
         ]);
 
         $createHistory = new History();
 
         $createHistory->user_id = $data['user_id'];
+        $createHistory->user_id = $data['username'];
         $createHistory->amount = $data['amount'];
         $createHistory->description = $data['description'];
         $createHistory->budget_type = $data['budget_type'];
