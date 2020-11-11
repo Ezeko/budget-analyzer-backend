@@ -36,6 +36,10 @@
                                         "format": "number",
                                         "example": "12345"
                                     },
+                                    "username": {
+                                        "type": "string",
+                                        "example": "ezekiel"
+                                    },
                                     "description": {
                                         "type": "string",
                                         "example": "₦20,000 was added to Education budget plan"
@@ -43,6 +47,10 @@
                                     "budget_type": {
                                         "type": "string",
                                         "example": "Education"
+                                    },
+                                    "priority": {
+                                        "type": "string",
+                                        "example": "medium"
                                     }
                                 },
                                 "type": "object"

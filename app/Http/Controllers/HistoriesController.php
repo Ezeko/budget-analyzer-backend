@@ -22,8 +22,10 @@ class HistoriesController extends Controller
      *       required={"user_id","amount", "description", "budget_type"},
      *       @OA\Property(property="user_id", type="string", format="id", example="flutW0MZyjQikx7mPpslUq37ryl1"),
      *       @OA\Property(property="amount", type="number", format="number", example="12345"),
+     * @OA\Property(property="username", type="string", example="ezekiel"),
      *       @OA\Property(property="description", type="string", example="₦20,000 was added to Education budget plan"),
      *     @OA\Property(property="budget_type", type="string", example="Education"),
+     * @OA\Property(property="priority", type="string", example="medium"),
      *    ),
      * ),
      * @OA\Response(
