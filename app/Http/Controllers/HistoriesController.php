@@ -119,7 +119,7 @@ class HistoriesController extends Controller
      */
     public function getHistories($user_id){
 
-        $histories = History::where('user_id', $user_id)->get();
+        $histories = History::where('user_id', $user_id)->get()->orderBy('created_at', 'desc');
 
         if ( $histories ){
 
