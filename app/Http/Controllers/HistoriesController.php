@@ -170,7 +170,7 @@ class HistoriesController extends Controller
      */
     public function getHistory($user_id, $budget_type){
         
-        $histories = History::where('user_id', $user_id)->where('budget_type', $budget_type)->get();
+        $histories = History::where('user_id', $user_id)->where('budget_type', $budget_type)->orderBy('id', 'DESC')->get();
 
         if ( $histories ){
 
