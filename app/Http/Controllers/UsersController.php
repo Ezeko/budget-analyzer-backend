@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -60,7 +61,46 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
-        //
+        //change request to accept json
+       $data = 
+       $request->json()->all();
+
+       // validate $requests
+
+       validator( 
+        [
+            'user_id' => 'required',
+            'username' => 'required',
+            'amount' => 'required',
+            'description' => 'required',
+            'budget_type' => 'required',
+            'priority' => 'required',
+            
+        ]);
+
+        $createUser = new User();
+
+        $createUser->user_id = $data['user_id'];
+        $createUser->username = $data['username'];
+        $createUser->name = $data['name'];
+        $createUser->email = $data['email'];
+
+        $created = $createUser->save();
+
+        if ($created) {
+            return response()->json([
+                'message' => 'User stored successfully',
+                'response' => 'success',
+                'data' => []
+            ], 201);
+            
+        } else {
+            return response()->json([
+                'message' => 'Budget not created',
+                'response' => 'error',
+            ], 400);
+        }
+
     }
 
     /**

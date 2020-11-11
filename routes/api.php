@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HistoriesController;
+use App\Http\Controllers\UsersController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,3 +29,6 @@ Route::get('/histories/{user_id}/{budget_type}', [HistoriesController::class,'ge
 
 //dashboard histories
 Route::get('/dash/histories/{user_id}', [HistoriesController::class,'getDashHistories']);
+
+//store user
+Route::post('/user/create', [UsersController::class, 'store']);
