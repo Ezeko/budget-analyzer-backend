@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\History;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HistoriesController extends Controller
@@ -76,11 +77,24 @@ class HistoriesController extends Controller
         $created = $createHistory->save();
 
         if ($created) {
-            return response()->json([
-                'message' => 'Budget history created successfully',
-                'response' => 'success',
-                'data' => []
-            ], 201);
+            //add to users detail
+            $user = User::where('user_id', $data['user_id'])->get([$data['budget_type'], 'total_worth']);
+
+            $prevBal = $user[0][$data['budget_type']];
+            $newBal = $prevBal + $data['amount'];
+            
+            $prevTot = $user[0]['total_worth'];
+            $newTot = $prevTot + $data['amount'];
+
+            $updated = User::where('user_id', $data['user_id'])->update([$data['budget_type'] => $newBal, 'total_worth' => $newTot]);
+            if ($updated){
+                return response()->json([
+                    'message' => 'Budget history created successfully',
+                    'response' => 'success',
+                    'data' => []
+                ], 201);
+                
+            }
             
         } else {
             return response()->json([

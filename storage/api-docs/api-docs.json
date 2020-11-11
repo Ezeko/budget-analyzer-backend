@@ -5,6 +5,50 @@
         "version": "1.0.1"
     },
     "paths": {
+        "/api/budgets/{user_id}": {
+            "get": {
+                "tags": [
+                    "Budgets"
+                ],
+                "summary": "Gets all user's budget",
+                "description": "Create budgets ",
+                "operationId": "Budgets",
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong user details. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "response": {
+                                            "type": "string",
+                                            "example": "success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/history/create": {
             "post": {
                 "tags": [
