@@ -19,6 +19,7 @@ class CreateHistoriesTable extends Migration
             $table->integer('amount');
             $table->string('description');
             $table->string('budget_type');
+            $table->string('priority');
             $table->timestamps();
         });
     }
