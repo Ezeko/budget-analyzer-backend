@@ -117,16 +117,23 @@ class HistoriesController extends Controller
      *     )
      * )
      */
-    public function getHistories($user_id){
-
-        $histories = History::where('user_id', $user_id)->orderBy('id', 'DESC')->get()->limit(0);
+    public function getHistories(Request $request, $user_id){
+        $limit = 100;
+        $data = 
+            $request->json()->all()
+        ;
+        
+        $data && $data['limit'] ? $limit = $data['limit'] : $limit;
+        $histories = History::where('user_id', $user_id)->orderBy('id', 'DESC')->limit($limit)->get();
 
         if ( $histories ){
 
             if (count($histories) > 0){
                 return response()->json([
                     'response' => 'success',
+                    'limit' => $limit,
                     'data' => $histories,
+                    
                 ], 200);
             } else {
                 return response()->json([
@@ -142,6 +149,8 @@ class HistoriesController extends Controller
             ], 404);
         }
     }
+
+    
 
     /**
      * @OA\Get(
