@@ -56,7 +56,8 @@ class HistoriesController extends Controller
             'user_id' => 'required',
             'amount' => 'required',
             'description' => 'required',
-            'budget_type' => 'required'
+            'budget_type' => 'required',
+            'priority' => 'required'
         ]);
 
         $createHistory = new History();
@@ -65,6 +66,7 @@ class HistoriesController extends Controller
         $createHistory->amount = $data['amount'];
         $createHistory->description = $data['description'];
         $createHistory->budget_type = $data['budget_type'];
+        $createHistory->priority = $data['priority'];
 
         $created = $createHistory->save();
 
