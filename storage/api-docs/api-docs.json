@@ -142,6 +142,54 @@
                 }
             }
         },
+        "/api/dash/histories/{user_id}": {
+            "get": {
+                "tags": [
+                    "Dashboard"
+                ],
+                "summary": "Get Dashboard histories",
+                "description": "Get limited budget histories by user",
+                "operationId": "GetDashHistories",
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong user details. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Success"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "example": "data objects"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/histories/{user_id}/{budget_type}": {
             "get": {
                 "tags": [

@@ -24,3 +24,6 @@ Route::post('/history/create', [HistoriesController::class,'createHistory']);
 Route::get('/histories/{user_id}', [HistoriesController::class,'getHistories']);
 
 Route::get('/histories/{user_id}/{budget_type}', [HistoriesController::class,'getHistory']);
+
+//dashboard histories
+Route::get('/dash/histories/{user_id}', [HistoriesController::class,'getDashHistories']);

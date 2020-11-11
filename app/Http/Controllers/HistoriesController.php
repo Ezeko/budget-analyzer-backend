@@ -150,7 +150,58 @@ class HistoriesController extends Controller
         }
     }
 
-    
+        /**
+     * @OA\Get(
+     * path="/api/dash/histories/{user_id}",
+     * summary="Get Dashboard histories",
+     * description="Get limited budget histories by user",
+     * operationId="GetDashHistories",
+     * tags={"Dashboard"},
+     * 
+     * @OA\Response(
+     *    response=422,
+     *    description="Wrong credentials response",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="Sorry, wrong user details. Please try again")
+     *        )
+     *     ),
+     *  * @OA\Response(
+     *    response=200,
+     *    description="Success",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="Success"),
+     *  @OA\Property(property="data", type="object", example="data objects")
+     *        )
+     *     )
+     * )
+     */
+    public function getDashHistories($user_id){
+        $limit = 5;
+        $histories = History::where('user_id', $user_id)->orderBy('id', 'DESC')->limit($limit)->get();
+
+        if ( $histories ){
+
+            if (count($histories) > 0){
+                return response()->json([
+                    'response' => 'success',
+                    'limit' => $limit,
+                    'data' => $histories,
+                    
+                ], 200);
+            } else {
+                return response()->json([
+                    'message' => 'No history found for this user',
+                    'response' => 'success',
+                    'data' => $histories,
+                ], 200);
+            }
+        } else {
+            return response()->json([
+                'message' => 'Budget not found',
+                'response' => 'error',
+            ], 404);
+        }
+    }
 
     /**
      * @OA\Get(
