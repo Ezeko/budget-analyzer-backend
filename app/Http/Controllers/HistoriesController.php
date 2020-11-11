@@ -56,17 +56,18 @@ class HistoriesController extends Controller
         validator( 
         [
             'user_id' => 'required',
+            'username' => 'required',
             'amount' => 'required',
             'description' => 'required',
             'budget_type' => 'required',
             'priority' => 'required',
-            'username' => 'required'
+            
         ]);
 
         $createHistory = new History();
 
         $createHistory->user_id = $data['user_id'];
-        $createHistory->user_id = $data['username'];
+        $createHistory->username = $data['username'];
         $createHistory->amount = $data['amount'];
         $createHistory->description = $data['description'];
         $createHistory->budget_type = $data['budget_type'];
