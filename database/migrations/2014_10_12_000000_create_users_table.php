@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->integer('gifts')->default(0);
             $table->integer('miscellaneous')->default(0);
             $table->integer('others')->default(0);
+            $table->integer('transport')->default(0);
             $table->integer('total_worth')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

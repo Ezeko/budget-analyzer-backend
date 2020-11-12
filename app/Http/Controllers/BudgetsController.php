@@ -40,67 +40,24 @@ class BudgetsController extends Controller
     public function index($userId)
     {
         //
-        $budgets = User::where('user_id', $userId)->get(['Savings', 'Education', 'Rent', 'Feeding', 'Entertainment', 'Gifts', 'Miscellaneous', 'Others'])[0];
+        $budgets = User::where('user_id', $userId)->get(['Savings', 'Education', 'Rent', 'Feeding', 'Entertainment', 'Gifts', 'Miscellaneous', 'Others', 'Transport']);
 
-        if (($budgets)){
+        if (count($budgets) > 0){
             return response()->json([
                 'response' => 'success',
-                'data' => $budgets,
+                'data' => $budgets[0],
                 
             ], 200);
         } else {
             return response()->json([
-                'message' => 'something occur',
+                'message' => 'user not found',
                 'response' => 'error',
                 
-            ], 400);
+            ], 404);
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 
     /**
      * @OA\Get(
@@ -129,13 +86,13 @@ class BudgetsController extends Controller
      */
     public function getBudget($user_id, $budget_type){
         
-        $budget = User::where('user_id', $user_id)->get([$budget_type])[0];
+        $budget = User::where('user_id', $user_id)->get([$budget_type]);
 
-        if ( $budget ){
+        if ( count($budget) > 0 ){
 
                 return response()->json([
                     'response' => 'success',
-                    'data' => $budget,
+                    'data' => $budget[0],
                 ], 200);
             
         } else {
