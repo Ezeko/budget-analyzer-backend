@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -88,6 +89,8 @@ class BudgetsController extends Controller
         
         $budget = User::where('user_id', $user_id)->get([$budget_type]);
 
+        $history = History::where( 'user_id', $user_id)->get();
+
         if ( count($budget) > 0 ){
 
                 return response()->json([
@@ -95,7 +98,15 @@ class BudgetsController extends Controller
                     'data' => $budget[0],
                 ], 200);
             
-        } else {
+        } 
+        else if (count($budget) > 0 && count($history) > 0){
+            return response()->json([
+                'response' => 'success',
+                'data' => $budget[0],
+                'history' => $history[0]
+            ], 200);
+        }
+         else {
             return response()->json([
                 'message' => 'Budget not found',
                 'response' => 'error',
