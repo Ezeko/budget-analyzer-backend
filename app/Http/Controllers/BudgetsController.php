@@ -90,7 +90,7 @@ class BudgetsController extends Controller
         
         $budget = User::where('user_id', $user_id)->get([$budget_type]);
 
-        $history = History::where( 'user_id', $user_id)->get();
+        $history = History::where( 'user_id', $user_id)->where('budget_type', $budget_type)->get();
 
         if ( count($budget) > 0  && count($history) < 1){
 
