@@ -80,7 +80,8 @@ class BudgetsController extends Controller
      *    description="Success",
      *    @OA\JsonContent(
      *       @OA\Property(property="message", type="string", example="Success"),
-     *  @OA\Property(property="data", type="object", example="data objects")
+     *  @OA\Property(property="data", type="object", example="[]"),
+     *  @OA\Property(property="history", type="object", example="[]")
      *        )
      *     )
      * )
@@ -91,11 +92,12 @@ class BudgetsController extends Controller
 
         $history = History::where( 'user_id', $user_id)->get();
 
-        if ( count($budget) > 0 ){
+        if ( count($budget) > 0  && count($history) < 1){
 
                 return response()->json([
                     'response' => 'success',
                     'data' => $budget[0],
+                    'history' => []
                 ], 200);
             
         } 

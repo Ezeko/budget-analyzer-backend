@@ -86,7 +86,11 @@
                                         },
                                         "data": {
                                             "type": "object",
-                                            "example": "data objects"
+                                            "example": "[]"
+                                        },
+                                        "history": {
+                                            "type": "object",
+                                            "example": "[]"
                                         }
                                     },
                                     "type": "object"
