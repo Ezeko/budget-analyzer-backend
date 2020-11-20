@@ -105,7 +105,7 @@ class BudgetsController extends Controller
             return response()->json([
                 'response' => 'success',
                 'data' => $budget[0],
-                'history' => $history[0]
+                'history' => $history
             ], 200);
         }
          else {
