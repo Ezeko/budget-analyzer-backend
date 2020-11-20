@@ -80,8 +80,8 @@ class BudgetsController extends Controller
      *    description="Success",
      *    @OA\JsonContent(
      *       @OA\Property(property="message", type="string", example="Success"),
-     *  @OA\Property(property="data", type="object", example="[]"),
-     *  @OA\Property(property="history", type="object", example="[]")
+     *  @OA\Property(property="data", type="object", example="data objects"),
+     *  @OA\Property(property="history", type="object", example="histories objects")
      *        )
      *     )
      * )
